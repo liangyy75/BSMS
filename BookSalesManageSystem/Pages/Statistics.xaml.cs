@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BookSalesManageSystem.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +24,31 @@ namespace BookSalesManageSystem.Pages
     /// </summary>
     public sealed partial class Statistics : Page
     {
+        ObservableCollection<MonthSales> monthSales = new ObservableCollection<MonthSales>();
+        ObservableCollection<Sale> monthSalesDetail = new ObservableCollection<Sale>();
+
         public Statistics()
         {
             this.InitializeComponent();
+            MonthSales month = new MonthSales { Month = 7, TotalSaleNum = 20, TotalSales = 34.5f };
+            monthSales.Add(month);
+            Sale sale = new Sale { Book = new Book { BId = 1, BAuthor = "a", BName = "b" }, Number = 12, TotalPrice = 23.4f };
+            monthSalesDetail.Add(sale);
+        }
+
+        private void MonthSalesList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void ShowCharts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Chart_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }
