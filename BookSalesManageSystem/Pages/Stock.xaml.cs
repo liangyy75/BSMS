@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BookSalesManageSystem.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +24,27 @@ namespace BookSalesManageSystem.Pages
     /// </summary>
     public sealed partial class Stock : Page
     {
+        ObservableCollection<Book> books = new ObservableCollection<Book>();
+
         public Stock()
         {
             this.InitializeComponent();
+
+        }
+
+        private void Search_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+
+        }
+
+        private void Search_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+
+        }
+
+        private void BookList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

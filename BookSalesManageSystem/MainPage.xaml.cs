@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookSalesManageSystem.Pages;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,10 +23,25 @@ namespace BookSalesManageSystem
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private string[] frames = { "库存", "退货", "进货", "统计", "销售"};
+
         public MainPage()
         {
             this.InitializeComponent();
-            
+            MyContent.Navigate(typeof(Sales));
+        }
+
+        private void Navigation_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string str = (string)e.ClickedItem;
+            switch (str)
+            {
+                case "退货": MyContent.Navigate(typeof(Return)); break;
+                case "进货": MyContent.Navigate(typeof(Purchase)); break;
+                case "统计": MyContent.Navigate(typeof(Statistics)); break;
+                case "销售": MyContent.Navigate(typeof(Sales)); break;
+                case "库存": MyContent.Navigate(typeof(Stock)); break;
+            }
         }
     }
 }

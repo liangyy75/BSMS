@@ -5,9 +5,42 @@
     xmlns:local="using:BookSalesManageSystem.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="using:BookSalesManageSystem.Models"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel MaxWidth="1200">
+            <RelativePanel Margin="20">
+                <TextBlock Text="库存" FontSize="20" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                <AutoSuggestBox Name="Search" Width="200" PlaceholderText="搜索库存" RelativePanel.AlignVerticalCenterWithPanel="True" QueryIcon="Find" 
+                            RelativePanel.AlignRightWithPanel="True" TextChanged="Search_TextChanged" QuerySubmitted="Search_QuerySubmitted"/>
+            </RelativePanel>
+            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"  Margin="-20, 5, -20, 5"/>
+            <Grid Margin="20, 10, 0, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="书籍编号" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBlock Text="书籍名称" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBlock Text="书籍作者" Grid.Column="2" VerticalAlignment="Center"/>
+            </Grid>
+            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1" Margin="-20, 5, -20, 5"/>
+            <ListView Name="BookList" ItemsSource="{x:Bind books}" IsItemClickEnabled="True" ItemClick="BookList_ItemClick">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="md:Book">
+                        <Grid Height="Auto" Margin="10, 0, 0, 0">
+                            
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>
