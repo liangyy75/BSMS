@@ -7,7 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Name="Navigation" IsItemClickEnabled="True" ItemsSource="{x:Bind frames}" ItemClick="Navigation_ItemClick"
+                  BorderThickness="0, 0, 1, 0" BorderBrush="LightGray">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <Grid Width="120">
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalTextAlignment="Center" FontSize="16"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Frame Name="MyContent" Grid.Column="1"></Frame>
     </Grid>
 </Page>
