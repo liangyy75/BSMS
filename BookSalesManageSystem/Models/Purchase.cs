@@ -9,7 +9,7 @@ namespace BookSalesManageSystem.Models
     //进货表
     class Purchase
     {
-        public Book book { get; set; }
+        public Book Book { get; set; }
         public int Number { get; set; }
         public int Price { get; set; }
         public DateTimeOffset Time{get; set;}

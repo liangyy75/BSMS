@@ -8,7 +8,7 @@ namespace BookSalesManageSystem.Models
 {
     class Return
     {
-        public Book book;
+        public Book Book { get; set; }
         public int Number { get; set; }
         public DateTimeOffset Time { get; set; }
     }
