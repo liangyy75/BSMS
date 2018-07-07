@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace BookSalesManageSystem.Models
 {
-    class Return
+    //进货表
+    class Purchase
     {
-        public Book book;
+        public Book book { get; set; }
         public int Number { get; set; }
-        public DateTimeOffset Time { get; set; }
+        public int Price { get; set; }
+        public DateTimeOffset Time{get; set;}
     }
 }

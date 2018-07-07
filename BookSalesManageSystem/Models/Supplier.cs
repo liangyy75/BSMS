@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BookSalesManageSystem.Models
 {
-    class Return
+    class Supplier
     {
-        public Book book;
-        public int Number { get; set; }
-        public DateTimeOffset Time { get; set; }
+        public int SId { get; set; }
+        public string SName { get; set; }
     }
 }

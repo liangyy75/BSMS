@@ -8,8 +8,9 @@ namespace BookSalesManageSystem.Models
 {
     class Stock
     {
-        public int BId { get; set; }
+        public Book book;
         public int Number { get; set; }
-        public float Price { get; set; }
+        public float OfferPrice { get; set; }
+        public float SalePrice { get; set; }
     }
 }

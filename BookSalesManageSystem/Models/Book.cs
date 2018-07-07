@@ -8,8 +8,8 @@ namespace BookSalesManageSystem.Models
 {
     public class Book
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Price { get; set; }
+        public int BId { get; set; }
+        public string BName { get; set; }
+        public string BAuthor { get; set; }
     }
 }

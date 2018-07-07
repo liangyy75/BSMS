@@ -102,6 +102,8 @@
     <Compile Include="Models\Return.cs" />
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\SupplierStock.cs" />
     <Compile Include="Pages\Purchase.xaml.cs">
       <DependentUpon>Purchase.xaml</DependentUpon>
     </Compile>
@@ -124,6 +126,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="BookSalesManageSystem_TemporaryKey.pfx" />
+    <Compile Include="Models\Purchase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
