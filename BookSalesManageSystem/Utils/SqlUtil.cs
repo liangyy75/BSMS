@@ -72,7 +72,7 @@ namespace BookSalesManageSystem.Utils
 	                FOREIGN KEY(s_id) REFERENCES supplier(s_id),
 	                PRIMARY KEY(s_id, b_id, p_time)
                 );");
-            insertData();
+            //insertData();
         }
         private static void create_table(string sql)
         {

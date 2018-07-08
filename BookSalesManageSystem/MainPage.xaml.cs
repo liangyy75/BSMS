@@ -30,7 +30,7 @@ namespace BookSalesManageSystem
         {
             this.InitializeComponent();
             MyContent.Navigate(typeof(Sales));
-            SqlUtil.LoadDatabase();
+            test();
         }
 
         private void Navigation_ItemClick(object sender, ItemClickEventArgs e)
@@ -44,6 +44,12 @@ namespace BookSalesManageSystem
                 case "销售": MyContent.Navigate(typeof(Sales)); break;
                 case "库存": MyContent.Navigate(typeof(Stock)); break;
             }
+        }
+
+        public void test()
+        {
+            SqlUtil.LoadDatabase();
+            MonthSalesUtil.GetAllMonthSales();
         }
     }
 }
