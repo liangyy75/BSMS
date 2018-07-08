@@ -104,13 +104,13 @@ namespace BookSalesManageSystem.Utils
                 }
             }
 
-            for (int i = 0; i < 10; ++i)
+            for (int i = 0; i < 100; ++i)
             {
                 string sql = "INSERT INTO supplier_stock(s_id, b_id, price) VALUES (?, ?, ?)";
                 using(var statement = conn.Prepare(sql))
                 {
-                    statement.Bind(1, i + 1);
-                    statement.Bind(2, new Random().Next(0, 100));
+                    statement.Bind(1, i % 10 + 1);
+                    statement.Bind(2, i + 1);
                     statement.Bind(3, new Random().NextDouble() * 50);
                     statement.Step();
                 }
