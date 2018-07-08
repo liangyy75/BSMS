@@ -12,15 +12,15 @@
         <TextBlock Text="进货" FontSize="20" HorizontalTextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 10"/>
         <RelativePanel Width="300" Margin="0, 10">
             <TextBlock Name="BookIDLabel" Text="书籍编号" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
-            <TextBox Name="BookIDBox" Width="300" TextWrapping="Wrap"/>
+            <TextBox Name="BookIDBox" Width="300" TextWrapping="Wrap" TextChanged="BookIDBox_TextChanged"/>
         </RelativePanel>
         <RelativePanel Width="300" Margin="0, 10">
             <TextBlock Name="SaleNumberLabel" Text="进货量" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
-            <TextBox Name="SaleNumberBox" Width="300" TextWrapping="Wrap"/>
+            <TextBox Name="SaleNumberBox" Width="300" TextWrapping="Wrap" TextChanged="SaleNumberBox_TextChanged"/>
         </RelativePanel>
         <RelativePanel Width="300" Margin="0, 10">
             <TextBlock Name="SalePriceLabel" Text="进货价" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
-            <TextBox Name="SalePriceBox" Width="300" TextWrapping="Wrap"/>
+            <TextBox Name="SalePriceBox" Width="300" TextWrapping="Wrap" TextChanged="SalePriceBox_TextChanged"/>
         </RelativePanel>
         <Grid Width="300" Margin="0, 10">
             <Button Name="SearchId" Content="查询" Click="SearchId_Click"/>

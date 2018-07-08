@@ -10,9 +10,9 @@ namespace BookSalesManageSystem.Utils
     public class SupplierStockUtil
     {
         // 查询
-        public static SupplierStock QuerySupplierStock(int id)
+        public static List<SupplierStock> QuerySupplierStock(int id)
         {
-            return null;
+            return new List<SupplierStock>();
         }
 
         // 更改

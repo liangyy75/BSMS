@@ -81,7 +81,7 @@ namespace BookSalesManageSystem.Pages
         private void BookIDBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             BookIDLabel.Visibility = string.IsNullOrEmpty(BookIDBox.Text) ? Visibility.Visible : Visibility.Collapsed;
-            if (string.IsNullOrEmpty(BookIDBox.Text))
+            if (string.IsNullOrEmpty(BookIDBox.Text) && BookDetail.Visibility == Visibility.Collapsed)
                 BookDetail.Visibility = Visibility.Collapsed;
         }
 
