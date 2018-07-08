@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookSalesManageSystem.Models
 {
-    class Supplier
+    public class Supplier
     {
         public int SId { get; set; }
         public string SName { get; set; }

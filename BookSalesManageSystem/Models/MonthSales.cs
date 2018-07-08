@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookSalesManageSystem.Models
 {
-    class MonthSales
+    public class MonthSales
     {
         public int Month { get; set; }
         public int TotalSaleNum { get; set; }

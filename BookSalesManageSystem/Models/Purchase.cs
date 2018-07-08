@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BookSalesManageSystem.Models
 {
     //进货表
-    class Purchase
+    public class Purchase
     {
         public int PId { get; set; }
         public Book Book { get; set; }
