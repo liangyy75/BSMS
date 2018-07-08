@@ -12,7 +12,7 @@ namespace BookSalesManageSystem.Models
         public Book Book { get; set; }
         public Supplier Supplier { get; set; }
         public int Number { get; set; }
-        public int Price { get; set; }
+        public float Price { get; set; }
         public DateTimeOffset Time{get; set;}
     }
 }

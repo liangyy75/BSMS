@@ -23,9 +23,9 @@ namespace BookSalesManageSystem.Utils
             string sql = "select sum(number), sum(total_price), strftime(\"%m\", s_time) as month from sale group by month order by month desc";
             var conn = SqlUtil.conn;
             List<MonthSales> monthSaleses = new List<MonthSales>();
-            using(var statement = conn.Prepare(sql))
+            using (var statement = conn.Prepare(sql))
             {
-                while(statement.Step() == SQLiteResult.ROW)
+                while (statement.Step() == SQLiteResult.ROW)
                 {
                     MonthSales monthSales = new MonthSales();
                     monthSales.TotalSaleNum = Int32.Parse(statement[0].ToString());

@@ -12,13 +12,25 @@ namespace BookSalesManageSystem.Utils
         // 添加
         public static void AddStock(Stock stock)
         {
-
+            using (var statement = SqlUtil.conn.Prepare("INSERT INTO stock (b_id, number, offer_price, sale_price) VALUES (?, ?, ?, ?)"))
+            {
+                statement.Bind(1, stock.Book.BId);
+                statement.Bind(2, stock.Number);
+                statement.Bind(3, stock.OfferPrice);
+                statement.Bind(4, stock.SalePrice);
+                statement.Step();
+            }
         }
 
         // 更改
-        public static void UpdateStock(int booid, int number)
+        public static void UpdateStock(int id, int number)
         {
-
+            using (var statement = SqlUtil.conn.Prepare("UPDATE stock SET number = number + ? WHERE b_id = ?"))
+            {
+                statement.Bind(1, number);
+                statement.Bind(2, id);
+                statement.Step();
+            }
         }
 
         // 得到全部

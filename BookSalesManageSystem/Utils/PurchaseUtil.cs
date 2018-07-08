@@ -12,7 +12,15 @@ namespace BookSalesManageSystem.Utils
         // 添加
         public static void AddPurchase(Purchase purchase)
         {
-
+            using (var statement = SqlUtil.conn.Prepare("INSERT INTO purchase (s_id, b_id, number, price, p_time) VALUES (?, ?, ?, ?, ?)"))
+            {
+                statement.Bind(1, purchase.Supplier.SId);
+                statement.Bind(2, purchase.Book.BId);
+                statement.Bind(3, purchase.Number);
+                statement.Bind(4, purchase.Price);
+                statement.Bind(5, purchase.Time);
+                statement.Step();
+            }
         }
 
         // 得到全部(order by time)

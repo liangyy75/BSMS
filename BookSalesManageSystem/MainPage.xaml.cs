@@ -49,7 +49,6 @@ namespace BookSalesManageSystem
         public void test()
         {
             SqlUtil.LoadDatabase();
-            MonthSalesUtil.GetAllMonthSales();
         }
     }
 }
