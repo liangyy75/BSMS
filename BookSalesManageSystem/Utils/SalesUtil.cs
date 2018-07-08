@@ -25,13 +25,52 @@ namespace BookSalesManageSystem.Utils
         // 得到全部(order by time)
         public static List<Sale> GetAllSales()
         {
-            return new List<Sale>();
+            string sql = "select s.s_time, s.number, s.total_price, b.b_id, b.b_name, b.b_author from sale s, book b where b.b_id=s.b_id order by s.s_time";
+            var conn = SqlUtil.conn;
+            List<Sale> sales = new List<Sale>();
+            using (var statement = conn.Prepare(sql))
+            {
+                while(statement.Step() == SQLitePCL.SQLiteResult.ROW)
+                {
+                    Sale sale = new Sale();
+                    sale.Time = DateTimeOffset.Parse(statement[0].ToString());
+                    sale.Number = int.Parse(statement[1].ToString());
+                    sale.TotalPrice = float.Parse(statement[2].ToString());
+                    sale.Book = new Book();
+                    sale.Book.BId = int.Parse(statement[3].ToString());
+                    sale.Book.BName = statement[4].ToString();
+                    sale.Book.BAuthor = statement[5].ToString();
+                    sales.Add(sale);
+
+                }
+            }
+            return sales;
         }
 
         // 查询(要查到对应的月份的所有书籍并根据他们销量排序)
         public static List<Sale> QuerySale(int month)
         {
-            return new List<Sale>();
+            string sql = "select s.s_time, sum(s.number) total, sum(s.total_price), b.b_id, b.b_name, b.b_author from sale s, book b where b.b_id=s.b_id and strftime(\"%m\", s.s_time) = ? group by b.b_id order by total desc";
+            var conn = SqlUtil.conn;
+            List<Sale> sales = new List<Sale>();
+            using (var statement = conn.Prepare(sql))
+            {
+                string mon = month > 9 ? month.ToString() : "0" + month;
+                statement.Bind(1, mon);
+                while(statement.Step() == SQLitePCL.SQLiteResult.ROW)
+                {
+                    Sale sale = new Sale();
+                    sale.Time = DateTimeOffset.Parse(statement[0].ToString());
+                    sale.Number = int.Parse(statement[1].ToString());
+                    sale.TotalPrice = float.Parse(statement[2].ToString());
+                    sale.Book = new Book();
+                    sale.Book.BId = int.Parse(statement[3].ToString());
+                    sale.Book.BName = statement[4].ToString();
+                    sale.Book.BAuthor = statement[5].ToString();
+                    sales.Add(sale);
+                }
+            }
+            return sales;
         }
     }
 }

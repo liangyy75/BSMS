@@ -49,6 +49,10 @@ namespace BookSalesManageSystem
         public void test()
         {
             SqlUtil.LoadDatabase();
+            //PurchaseUtil.GetAllPurchases();
+            //ReturnUtil.GetAllReturns();
+            //SalesUtil.GetAllSales();
+            SalesUtil.QuerySale(6);
         }
     }
 }
