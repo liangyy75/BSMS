@@ -12,7 +12,14 @@ namespace BookSalesManageSystem.Utils
         // 添加
         public static void AddSale(Sale sale)
         {
-
+            using (var statement = SqlUtil.conn.Prepare("INSERT INTO sale (b_id, number, total_price, s_time) VALUES (?, ?, ?, ?)"))
+            {
+                statement.Bind(1, sale.Book.BId);
+                statement.Bind(2, sale.Number);
+                statement.Bind(3, sale.TotalPrice);
+                statement.Bind(4, sale.Time);
+                statement.Step();
+            }
         }
 
         // 得到全部(order by time)
