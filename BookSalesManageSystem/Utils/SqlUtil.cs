@@ -1,9 +1,11 @@
 ﻿using SQLitePCL;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace BookSalesManageSystem.Utils
 {
@@ -72,7 +74,7 @@ namespace BookSalesManageSystem.Utils
 	                FOREIGN KEY(s_id) REFERENCES supplier(s_id),
 	                PRIMARY KEY(s_id, b_id, p_time)
                 );");
-            //insertData();
+            // insertData();
         }
         private static void create_table(string sql)
         {
@@ -111,7 +113,7 @@ namespace BookSalesManageSystem.Utils
                 {
                     statement.Bind(1, i % 10 + 1);
                     statement.Bind(2, i + 1);
-                    statement.Bind(3, new Random().NextDouble() * 50);
+                    statement.Bind(3, new Random().Next(10, 50));
                     statement.Step();
                 }
             }

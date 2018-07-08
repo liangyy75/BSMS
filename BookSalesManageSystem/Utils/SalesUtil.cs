@@ -17,7 +17,7 @@ namespace BookSalesManageSystem.Utils
                 statement.Bind(1, sale.Book.BId);
                 statement.Bind(2, sale.Number);
                 statement.Bind(3, sale.TotalPrice);
-                statement.Bind(4, sale.Time);
+                statement.Bind(4, sale.Time.ToString("u"));
                 statement.Step();
             }
         }

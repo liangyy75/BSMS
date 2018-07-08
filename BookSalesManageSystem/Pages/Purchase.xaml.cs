@@ -1,5 +1,6 @@
 ﻿using BookSalesManageSystem.Models;
 using BookSalesManageSystem.Utils;
+using BookSalesManageSystem.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,8 +42,10 @@ namespace BookSalesManageSystem.Pages
             BookDetail.Visibility = Visibility.Visible;
             supplierStocks.Clear();
             SupplierStockUtil.QuerySupplierStock(int.Parse(BookIDBox.Text)).ForEach(p => supplierStocks.Add(p));
-            if(supplierStocks.Count() > 0)
+            if (supplierStocks.Count() > 0)
                 select = supplierStocks[0];
+            else
+                BookDetail.Visibility = Visibility.Collapsed;
         }
 
         private async void Sure_Click(object sender, RoutedEventArgs e)
@@ -52,17 +55,23 @@ namespace BookSalesManageSystem.Pages
             if(select != null)
             {
                 int n = int.Parse(SaleNumberBox.Text);
+                float n2 = float.Parse(SalePriceBox.Text);
                 SaleNumberBox.Text = "";
+                SalePriceBox.Text = "";
                 if (n > select.Number)
                 {
                     await new MessageDialog("这种书没有多么多了，滚！").ShowAsync();
                     return;
                 }
                 // 库存记录
-                StockUtil.UpdateStock(select.Book.BId, n);
+                if (StockUtil.QueryStock(select.Book.BId.ToString()) == null)
+                    StockViewModel.GetInstance().AddStock(new Models.Stock { Book = select.Book, Number = 0, OfferPrice = select.Price, SalePrice = n2 });
+                StockViewModel.GetInstance().UpdateStock(select.Book.BId, n);
+                SupplierStockUtil.UpdateSupplierStock(select.Supplier.SId, select.Book.BId, 0 - n);
                 // 进货记录
-                Models.Purchase purchase = new Models.Purchase { Book = select.Book, Number = n, Time = DateTimeOffset.Now, Supplier = select.Supplier, Price = n * select.Price };
+                Models.Purchase purchase = new Models.Purchase { Book = select.Book, Number = n, Time = DateTimeOffset.Now, Supplier = select.Supplier, Price = select.Price };
                 PurchaseUtil.AddPurchase(purchase);
+                await new MessageDialog("进货成功了！").ShowAsync();
             }
             else
                 await new MessageDialog("没有这种书供应，请重新输入书籍编号！").ShowAsync();

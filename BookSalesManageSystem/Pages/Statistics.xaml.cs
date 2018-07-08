@@ -46,9 +46,10 @@ namespace BookSalesManageSystem.Pages
 
         private void ShowCharts_Click(object sender, RoutedEventArgs e)
         {
-            sales.Clear();
+            monthSalesDetail.Clear();
             var s = sender as FrameworkElement;
-            SalesUtil.QuerySale(((MonthSales)s.DataContext).Month).ForEach(p => sales.Add(p));
+            SalesUtil.QuerySale(((MonthSales)s.DataContext).Month).ForEach(p => monthSalesDetail.Add(p));
+            MyPivot.SelectedIndex = 1;
         }
     }
 }

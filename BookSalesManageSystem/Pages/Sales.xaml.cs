@@ -1,4 +1,5 @@
 ﻿using BookSalesManageSystem.Utils;
+using BookSalesManageSystem.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -45,6 +46,8 @@ namespace BookSalesManageSystem.Pages
                 BookSalePrice.Text = stock.SalePrice.ToString();
                 BookBuyPrice.Text = stock.OfferPrice.ToString();
             }
+            else
+                BookDetail.Visibility = Visibility.Collapsed;
         }
 
         private async void Sure_Click(object sender, RoutedEventArgs e)
@@ -62,10 +65,11 @@ namespace BookSalesManageSystem.Pages
                     return;
                 }
                 // 库存记录
-                StockUtil.UpdateStock(stock.Book.BId, 0 - n);
+                StockViewModel.GetInstance().UpdateStock(stock.Book.BId, 0 - n);
                 // 销售记录
                 Models.Sale sale = new Models.Sale { Book = stock.Book, Number = n, Time = DateTimeOffset.Now, TotalPrice = n * stock.SalePrice };
                 SalesUtil.AddSale(sale);
+                await new MessageDialog("销售成功！").ShowAsync();
             }
             else
                 await new MessageDialog("没有这种书，请重新输入书籍编号！").ShowAsync();

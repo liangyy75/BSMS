@@ -53,6 +53,7 @@ namespace BookSalesManageSystem.ViewModels
         {
             if(allStocks.Count() > 0)
             {
+                stocks.Clear();
                 foreach (Stock stock in allStocks)
                     stocks.Add(stock);
                 allStocks.Clear();

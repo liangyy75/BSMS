@@ -13,17 +13,17 @@ namespace BookSalesManageSystem.Utils
         // 查询
         public static List<SupplierStock> QuerySupplierStock(int id)
         {
-            List<SupplierStock> supplierStocks = null;
-            using (var statement = SqlUtil.conn.Prepare("SELECT S.s_id, S.s_name, B.b_id, B.b_name, B.b_author, SS.number, SS.price" +
+            List<SupplierStock> supplierStocks = new List<SupplierStock>();
+            using (var statement = SqlUtil.conn.Prepare("SELECT S.s_id, S.s_name, B.b_id, B.b_name, B.b_author, SS.number, SS.price " +
                 "FROM supplier_stock SS, book B, supplier S " +
-                "WHERE SS.b_id = ? and SS.b_id = B.b_id and SS.s_id = S_bid"))
+                "WHERE SS.b_id = ? and SS.b_id = B.b_id and SS.s_id = S.s_id"))
             {
                 statement.Bind(1, id);
                 while (SQLiteResult.ROW == statement.Step())
                 {
-                    Supplier supplier = new Supplier { SId = (int)statement[0], SName = (string)statement[1] };
-                    Book book = new Book { BId = (int)statement[2], BName = (string)statement[3], BAuthor = (string)statement[4] };
-                    SupplierStock supplierStock = new SupplierStock { Supplier = supplier, Book = book, Number = (int)statement[5], Price = (float)statement[7] };
+                    Supplier supplier = new Supplier { SId = int.Parse(statement[0].ToString()), SName = (string)statement[1] };
+                    Book book = new Book { BId = int.Parse(statement[2].ToString()), BName = (string)statement[3], BAuthor = (string)statement[4] };
+                    SupplierStock supplierStock = new SupplierStock { Supplier = supplier, Book = book, Number = int.Parse(statement[5].ToString()), Price = float.Parse(statement[6].ToString()) };
                     supplierStocks.Add(supplierStock);
                 }
             }

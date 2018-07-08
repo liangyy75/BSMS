@@ -1,4 +1,5 @@
 ﻿using BookSalesManageSystem.Utils;
+using BookSalesManageSystem.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,10 +45,11 @@ namespace BookSalesManageSystem.Pages
                     return;
                 }
                 // 库存记录
-                StockUtil.UpdateStock(stock.Book.BId, n);
+                StockViewModel.GetInstance().UpdateStock(stock.Book.BId, n);
                 // 还书记录
                 Models.Return @return = new Models.Return { Book = stock.Book, Number = n, Time = DateTimeOffset.Now, TotalPrice = stock.SalePrice * n };
                 ReturnUtil.AddReturn(@return);
+                await new MessageDialog("归还成功！").ShowAsync();
             }
             else
                 await new MessageDialog("没有这种书，请重新输入书籍编号！").ShowAsync();

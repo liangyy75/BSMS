@@ -19,7 +19,7 @@ namespace BookSalesManageSystem.Utils
                 statement.Bind(1, id);
                 if (SQLiteResult.ROW == statement.Step())
                 {
-                    supplier = new Supplier { SId = (int)statement[0], SName = (string)statement[1] };
+                    supplier = new Supplier { SId = int.Parse(statement[0].ToString()), SName = (string)statement[1] };
                 }
             }
             return supplier;

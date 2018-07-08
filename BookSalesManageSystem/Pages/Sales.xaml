@@ -38,7 +38,6 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="编号" Grid.Column="0" VerticalAlignment="Center"/>
                 <TextBlock Text="名称" Grid.Column="1" VerticalAlignment="Center"/>

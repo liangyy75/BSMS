@@ -19,7 +19,7 @@
             <TextBox Name="SaleNumberBox" Width="300" TextWrapping="Wrap" TextChanged="SaleNumberBox_TextChanged"/>
         </RelativePanel>
         <RelativePanel Width="300" Margin="0, 10">
-            <TextBlock Name="SalePriceLabel" Text="进货价" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
+            <TextBlock Name="SalePriceLabel" Text="销售价" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
             <TextBox Name="SalePriceBox" Width="300" TextWrapping="Wrap" TextChanged="SalePriceBox_TextChanged"/>
         </RelativePanel>
         <Grid Width="300" Margin="0, 10">
@@ -32,7 +32,6 @@
             <TextBlock Text="该书库存情况" FontSize="20" HorizontalAlignment="Center" HorizontalTextAlignment="Center" VerticalAlignment="Center" Margin="0, 10, 0, 20"/>
             <Grid Margin="20, 10, 20, 10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>

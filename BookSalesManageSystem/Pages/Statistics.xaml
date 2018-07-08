@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot Title="具体数据情况" FontSize="24">
+        <Pivot Name="MyPivot" Title="具体数据情况">
             <Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" FontSize="20"/>
@@ -108,7 +108,7 @@
                 <StackPanel>
                     <Grid Margin="20, 10, 20, 10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -133,7 +133,7 @@
                             <DataTemplate x:DataType="md:Sale">
                                 <Grid Height="Auto" Margin="10, 0, 0, 0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
@@ -156,7 +156,7 @@
                 <StackPanel>
                     <Grid Margin="20, 10, 20, 10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -179,7 +179,7 @@
                             <DataTemplate x:DataType="md:Return">
                                 <Grid Height="Auto" Margin="10, 0, 0, 0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
@@ -200,7 +200,7 @@
                 <StackPanel>
                     <Grid Margin="20, 10, 20, 10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -208,7 +208,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="进货时间" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBlock Text="进货总额" Grid.Column="1" VerticalAlignment="Center"/>
+                        <TextBlock Text="进货单价" Grid.Column="1" VerticalAlignment="Center"/>
                         <TextBlock Text="进货量" Grid.Column="2" VerticalAlignment="Center"/>
                         <TextBlock Text="书籍编号" Grid.Column="3" VerticalAlignment="Center"/>
                         <TextBlock Text="书籍名" Grid.Column="4" VerticalAlignment="Center"/>
@@ -225,7 +225,7 @@
                             <DataTemplate x:DataType="md:Purchase">
                                 <Grid Height="Auto" Margin="10, 0, 0, 0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
