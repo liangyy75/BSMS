@@ -24,12 +24,15 @@ namespace BookSalesManageSystem.Pages
     /// </summary>
     public sealed partial class Stock : Page
     {
-        ObservableCollection<Book> books = new ObservableCollection<Book>();
+        ObservableCollection<Models.Stock> stocks = new ObservableCollection<Models.Stock>();
 
         public Stock()
         {
             this.InitializeComponent();
-
+            Book book = new Book() { BId = 1, BName="smg", BAuthor="wtf" };
+            Models.Stock stock = new Models.Stock() { Book=book, Number=10, OfferPrice=1.5f, SalePrice=2.0f };
+            stocks.Add(stock);
+            
         }
 
         private void Search_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

@@ -9,34 +9,53 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel MaxWidth="1200">
+        <StackPanel>
             <RelativePanel Margin="20">
                 <TextBlock Text="库存" FontSize="20" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
                 <AutoSuggestBox Name="Search" Width="200" PlaceholderText="搜索库存" RelativePanel.AlignVerticalCenterWithPanel="True" QueryIcon="Find" 
                             RelativePanel.AlignRightWithPanel="True" TextChanged="Search_TextChanged" QuerySubmitted="Search_QuerySubmitted"/>
             </RelativePanel>
-            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"  Margin="-20, 5, -20, 5"/>
-            <Grid Margin="20, 10, 0, 10">
+            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"/>
+            <Grid Margin="20, 10, 20, 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="书籍编号" Grid.Column="0" VerticalAlignment="Center"/>
-                <TextBlock Text="书籍名称" Grid.Column="1" VerticalAlignment="Center"/>
-                <TextBlock Text="书籍作者" Grid.Column="2" VerticalAlignment="Center"/>
+                <TextBlock Text="编号" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBlock Text="名称" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBlock Text="作者" Grid.Column="2" VerticalAlignment="Center"/>
+                <TextBlock Text="库存量" Grid.Column="3" VerticalAlignment="Center"/>
+                <TextBlock Text="买进价" Grid.Column="4" VerticalAlignment="Center"/>
+                <TextBlock Text="卖出价" Grid.Column="5" VerticalAlignment="Center"/>
             </Grid>
-            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1" Margin="-20, 5, -20, 5"/>
-            <ListView Name="BookList" ItemsSource="{x:Bind books}" IsItemClickEnabled="True" ItemClick="BookList_ItemClick">
+            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"/>
+            <ListView Name="BookList" ItemsSource="{x:Bind stocks}" IsItemClickEnabled="True" ItemClick="BookList_ItemClick">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="md:Book">
+                    <DataTemplate x:DataType="md:Stock">
                         <Grid Height="Auto" Margin="10, 0, 0, 0">
-                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{x:Bind Book.BId}" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Book.BName}" Grid.Column="1" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Book.BAuthor}" Grid.Column="2" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Number}" Grid.Column="3" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind OfferPrice}" Grid.Column="4" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind SalePrice}" Grid.Column="5" VerticalAlignment="Center"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
