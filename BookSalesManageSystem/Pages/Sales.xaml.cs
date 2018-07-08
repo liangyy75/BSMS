@@ -26,5 +26,25 @@ namespace BookSalesManageSystem.Pages
         {
             this.InitializeComponent();
         }
+
+        private void Sure_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BookIDBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void SearchId_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

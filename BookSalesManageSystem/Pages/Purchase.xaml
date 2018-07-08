@@ -5,9 +5,76 @@
     xmlns:local="using:BookSalesManageSystem.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="using:BookSalesManageSystem.Models"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
-    </Grid>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Text="进货" FontSize="20" HorizontalTextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 10"/>
+        <RelativePanel Width="300" Margin="0, 10">
+            <TextBlock Name="BookIDLabel" Text="书籍编号" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
+            <TextBox Name="BookIDBox" Width="300" TextWrapping="Wrap"/>
+        </RelativePanel>
+        <RelativePanel Width="300" Margin="0, 10">
+            <TextBlock Name="SaleNumberLabel" Text="进货量" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
+            <TextBox Name="SaleNumberBox" Width="300" TextWrapping="Wrap"/>
+        </RelativePanel>
+        <RelativePanel Width="300" Margin="0, 10">
+            <TextBlock Name="SalePriceLabel" Text="进货价" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
+            <TextBox Name="SalePriceBox" Width="300" TextWrapping="Wrap"/>
+        </RelativePanel>
+        <Grid Width="300" Margin="0, 10">
+            <Button Name="SearchId" Content="查询" Click="SearchId_Click"/>
+            <Button Name="Sure" Content="确定" Click="Sure_Click" HorizontalAlignment="Center"/>
+            <Button Name="Cancel" Content="取消" Click="Cancel_Click" HorizontalAlignment="Right"/>
+        </Grid>
+        <StackPanel Name="BookDetail" Margin="20" Visibility="Collapsed">
+            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"/>
+            <TextBlock Text="该书库存情况" FontSize="20" HorizontalAlignment="Center" HorizontalTextAlignment="Center" VerticalAlignment="Center" Margin="0, 10, 0, 20"/>
+            <Grid Margin="20, 10, 20, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="书籍编号" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBlock Text="书籍名称" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBlock Text="书籍作者" Grid.Column="2" VerticalAlignment="Center"/>
+                <TextBlock Text="供应商库存量" Grid.Column="3" VerticalAlignment="Center"/>
+                <TextBlock Text="供应商名称" Grid.Column="4" VerticalAlignment="Center"/>
+                <TextBlock Text="供应价" Grid.Column="5" VerticalAlignment="Center"/>
+            </Grid>
+            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"/>
+            <ListView Name="SupplierList" ItemsSource="{x:Bind supplierStocks}" IsItemClickEnabled="True" ItemClick="SupplierList_ItemClick">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="md:SupplierStock">
+                        <Grid Height="Auto" Margin="10, 0, 0, 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{x:Bind Book.BId}" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Book.BName}" Grid.Column="1" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Book.BAuthor}" Grid.Column="2" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Number}" Grid.Column="3" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Supplier.SName}" Grid.Column="4" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Price}" Grid.Column="5" VerticalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </StackPanel>
 </Page>

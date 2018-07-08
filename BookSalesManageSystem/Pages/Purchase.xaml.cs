@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BookSalesManageSystem.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +24,31 @@ namespace BookSalesManageSystem.Pages
     /// </summary>
     public sealed partial class Purchase : Page
     {
+        ObservableCollection<SupplierStock> supplierStocks = new ObservableCollection<SupplierStock>();
+
         public Purchase()
         {
             this.InitializeComponent();
+        }
+
+        private void SearchId_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sure_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SupplierList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

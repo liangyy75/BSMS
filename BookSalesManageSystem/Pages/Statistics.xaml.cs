@@ -26,6 +26,9 @@ namespace BookSalesManageSystem.Pages
     {
         ObservableCollection<MonthSales> monthSales = new ObservableCollection<MonthSales>();
         ObservableCollection<Sale> monthSalesDetail = new ObservableCollection<Sale>();
+        ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
+        ObservableCollection<Return> returns = new ObservableCollection<Return>();
+        ObservableCollection<Purchase> purchases = new ObservableCollection<Purchase>();
 
         public Statistics()
         {
@@ -47,6 +50,21 @@ namespace BookSalesManageSystem.Pages
         }
 
         private void Chart_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void SalesList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void ReturnList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void PurchaseList_ItemClick(object sender, ItemClickEventArgs e)
         {
 
         }
