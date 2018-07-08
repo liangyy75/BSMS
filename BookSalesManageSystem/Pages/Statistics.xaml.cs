@@ -38,7 +38,7 @@ namespace BookSalesManageSystem.Pages
             // monthSales.Add(month);
             // Sale sale = new Sale { Book = new Book { BId = 1, BAuthor = "a", BName = "b" }, Number = 12, TotalPrice = 23.4f };
             // monthSalesDetail.Add(sale);
-            MonthSalesUtil.GetAllMonthSales().ForEach(p => monthSales.Add(p));
+            SalesUtil.GetAllMonthSales().ForEach(p => monthSales.Add(p));
             SalesUtil.GetAllSales().ForEach(p => sales.Add(p));
             ReturnUtil.GetAllReturns().ForEach(p => returns.Add(p));
             PurchaseUtil.GetAllPurchases().ForEach(p => purchases.Add(p));

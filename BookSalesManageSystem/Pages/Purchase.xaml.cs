@@ -50,7 +50,8 @@ namespace BookSalesManageSystem.Pages
 
         private async void Sure_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(BookIDBox.Text) || string.IsNullOrEmpty(SaleNumberBox.Text) || string.IsNullOrEmpty(SalePriceBox.Text))
+            if (string.IsNullOrEmpty(BookIDBox.Text) || string.IsNullOrEmpty(SaleNumberBox.Text) || 
+                string.IsNullOrEmpty(SalePriceBox.Text))
                 return;
             if(select != null)
             {
@@ -60,16 +61,18 @@ namespace BookSalesManageSystem.Pages
                 SalePriceBox.Text = "";
                 if (n > select.Number)
                 {
-                    await new MessageDialog("这种书没有多么多了，滚！").ShowAsync();
+                    await new MessageDialog("这种书没有多么多了！").ShowAsync();
                     return;
                 }
                 // 库存记录
                 if (StockUtil.QueryStock(select.Book.BId.ToString()) == null)
-                    StockViewModel.GetInstance().AddStock(new Models.Stock { Book = select.Book, Number = 0, OfferPrice = select.Price, SalePrice = n2 });
+                    StockViewModel.GetInstance().AddStock(new Models.Stock { Book = select.Book, Number = 0,
+                        OfferPrice = select.Price, SalePrice = n2 });
                 StockViewModel.GetInstance().UpdateStock(select.Book.BId, n);
                 SupplierStockUtil.UpdateSupplierStock(select.Supplier.SId, select.Book.BId, 0 - n);
                 // 进货记录
-                Models.Purchase purchase = new Models.Purchase { Book = select.Book, Number = n, Time = DateTimeOffset.Now, Supplier = select.Supplier, Price = select.Price };
+                Models.Purchase purchase = new Models.Purchase { Book = select.Book, Number = n, Time = DateTimeOffset.Now,
+                    Supplier = select.Supplier, Price = select.Price };
                 PurchaseUtil.AddPurchase(purchase);
                 await new MessageDialog("进货成功了！").ShowAsync();
             }

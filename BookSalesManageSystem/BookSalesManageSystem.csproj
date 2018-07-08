@@ -121,8 +121,6 @@
       <DependentUpon>Stock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\BookUtil.cs" />
-    <Compile Include="Utils\MonthSalesUtil.cs" />
     <Compile Include="Utils\PurchaseUtil.cs" />
     <Compile Include="Utils\ReturnUtil.cs" />
     <Compile Include="Utils\SalesUtil.cs" />

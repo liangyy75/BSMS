@@ -41,7 +41,7 @@ namespace BookSalesManageSystem.Pages
                 SaleNumberBox.Text = "";
                 if (n < 0)
                 {
-                    await new MessageDialog("怎么还负的数值啊，滚！").ShowAsync();
+                    await new MessageDialog("还书的数值不正确！").ShowAsync();
                     return;
                 }
                 // 库存记录
@@ -52,7 +52,7 @@ namespace BookSalesManageSystem.Pages
                 await new MessageDialog("归还成功！").ShowAsync();
             }
             else
-                await new MessageDialog("没有这种书，请重新输入书籍编号！").ShowAsync();
+                await new MessageDialog("本店没有进过这种书，不必归还到此！").ShowAsync();
             BookIDBox.Text = "";
         }
 

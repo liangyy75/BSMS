@@ -61,7 +61,7 @@ namespace BookSalesManageSystem.Pages
                 SaleNumberBox.Text = "";
                 if (n > stock.Number)
                 {
-                    await new MessageDialog("这种书没有多么多了，滚！").ShowAsync();
+                    await new MessageDialog("这种书没有多么多了！").ShowAsync();
                     return;
                 }
                 // 库存记录

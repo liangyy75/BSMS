@@ -24,13 +24,13 @@ namespace BookSalesManageSystem
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private string[] frames = { "库存", "退货", "进货", "统计", "销售"};
+        private string[] frames = { "进货", "销售", "退货", "库存", "统计" };
 
         public MainPage()
         {
             this.InitializeComponent();
             MyContent.Navigate(typeof(Sales));
-            test();
+            SqlUtil.LoadDatabase();
         }
 
         private void Navigation_ItemClick(object sender, ItemClickEventArgs e)
@@ -44,15 +44,6 @@ namespace BookSalesManageSystem
                 case "销售": MyContent.Navigate(typeof(Sales)); break;
                 case "库存": MyContent.Navigate(typeof(Stock)); break;
             }
-        }
-
-        public void test()
-        {
-            SqlUtil.LoadDatabase();
-            //PurchaseUtil.GetAllPurchases();
-            //ReturnUtil.GetAllReturns();
-            //SalesUtil.GetAllSales();
-            SalesUtil.QuerySale(6);
         }
     }
 }
