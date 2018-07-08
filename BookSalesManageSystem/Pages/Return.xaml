@@ -11,47 +11,15 @@
         <TextBlock Text="退货" FontSize="20" HorizontalTextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 10"/>
         <RelativePanel Width="300" Margin="0, 10">
             <TextBlock Name="BookIDLabel" Text="书籍编号" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
-            <TextBox Name="BookIDBox" Width="300" TextWrapping="Wrap"/>
+            <TextBox Name="BookIDBox" Width="300" TextWrapping="Wrap" TextChanged="BookIDBox_TextChanged"/>
         </RelativePanel>
         <RelativePanel Width="300" Margin="0, 10">
             <TextBlock Name="SaleNumberLabel" Text="退货量" FontSize="16" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="5, 0"/>
-            <TextBox Name="SaleNumberBox" Width="300" TextWrapping="Wrap"/>
+            <TextBox Name="SaleNumberBox" Width="300" TextWrapping="Wrap" TextChanged="SaleNumberBox_TextChanged"/>
         </RelativePanel>
         <Grid Width="300" Margin="0, 10">
-            <Button Name="SearchId" Content="查询" Click="SearchId_Click"/>
-            <Button Name="Sure" Content="确定" Click="Sure_Click" HorizontalAlignment="Center"/>
+            <Button Name="Sure" Content="确定" Click="Sure_Click" HorizontalAlignment="Left"/>
             <Button Name="Cancel" Content="取消" Click="Cancel_Click" HorizontalAlignment="Right"/>
         </Grid>
-        <StackPanel Name="BookDetail" Margin="20" Visibility="Collapsed">
-            <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"/>
-            <TextBlock Text="该书库存情况" FontSize="20" HorizontalAlignment="Center" HorizontalTextAlignment="Center" VerticalAlignment="Center" Margin="0, 10, 0, 20"/>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="编号" Grid.Column="0" VerticalAlignment="Center"/>
-                <TextBlock Text="名称" Grid.Column="1" VerticalAlignment="Center"/>
-                <TextBlock Text="作者" Grid.Column="2" VerticalAlignment="Center"/>
-                <TextBlock Text="库存量" Grid.Column="3" VerticalAlignment="Center"/>
-                <TextBlock Text="买进价" Grid.Column="4" VerticalAlignment="Center"/>
-                <TextBlock Text="卖出价" Grid.Column="5" VerticalAlignment="Center"/>
-                <TextBlock Name="BookId" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBlock Name="BookName" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBlock Name="BookAuthor" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBlock Name="BookNumber" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBlock Name="BookSalePrice" Grid.Column="4" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBlock Name="BookBuyPrice" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center"/>
-            </Grid>
-        </StackPanel>
     </StackPanel>
 </Page>

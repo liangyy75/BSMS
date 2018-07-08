@@ -1,4 +1,5 @@
 ﻿using BookSalesManageSystem.Models;
+using BookSalesManageSystem.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,46 +28,27 @@ namespace BookSalesManageSystem.Pages
         ObservableCollection<MonthSales> monthSales = new ObservableCollection<MonthSales>();
         ObservableCollection<Sale> monthSalesDetail = new ObservableCollection<Sale>();
         ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
-        ObservableCollection<Return> returns = new ObservableCollection<Return>();
-        ObservableCollection<Purchase> purchases = new ObservableCollection<Purchase>();
+        ObservableCollection<Models.Return> returns = new ObservableCollection<Models.Return>();
+        ObservableCollection<Models.Purchase> purchases = new ObservableCollection<Models.Purchase>();
 
         public Statistics()
         {
             this.InitializeComponent();
-            MonthSales month = new MonthSales { Month = 7, TotalSaleNum = 20, TotalSales = 34.5f };
-            monthSales.Add(month);
-            Sale sale = new Sale { Book = new Book { BId = 1, BAuthor = "a", BName = "b" }, Number = 12, TotalPrice = 23.4f };
-            monthSalesDetail.Add(sale);
-        }
-
-        private void MonthSalesList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
+            // MonthSales month = new MonthSales { Month = 7, TotalSaleNum = 20, TotalSales = 34.5f };
+            // monthSales.Add(month);
+            // Sale sale = new Sale { Book = new Book { BId = 1, BAuthor = "a", BName = "b" }, Number = 12, TotalPrice = 23.4f };
+            // monthSalesDetail.Add(sale);
+            MonthSalesUtil.GetAllMonthSales().ForEach(p => monthSales.Add(p));
+            SalesUtil.GetAllSales().ForEach(p => sales.Add(p));
+            ReturnUtil.GetAllReturns().ForEach(p => returns.Add(p));
+            PurchaseUtil.GetAllPurchases().ForEach(p => purchases.Add(p));
         }
 
         private void ShowCharts_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Chart_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void SalesList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void ReturnList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void PurchaseList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
+            sales.Clear();
+            var s = sender as FrameworkElement;
+            SalesUtil.QuerySale(((MonthSales)s.DataContext).Month).ForEach(p => sales.Add(p));
         }
     }
 }

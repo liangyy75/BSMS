@@ -21,7 +21,7 @@ namespace BookSalesManageSystem.Utils
             return null;
         }
 
-        // 查询
+        // 查询(要查到对应的月份的所有书籍并根据他们销量排序)
         public static List<Sale> QuerySale(int month)
         {
             return null;

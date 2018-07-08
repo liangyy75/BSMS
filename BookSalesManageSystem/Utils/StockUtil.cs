@@ -27,6 +27,12 @@ namespace BookSalesManageSystem.Utils
             return null;
         }
 
+        // 查询
+        public static Stock QueryStock(string id)
+        {
+            return null;
+        }
+
         // 模糊查询
         public static List<Stock> QueryStocks(string str)
         {

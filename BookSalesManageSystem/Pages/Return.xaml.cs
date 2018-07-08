@@ -1,10 +1,12 @@
-﻿using System;
+﻿using BookSalesManageSystem.Utils;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,19 +29,45 @@ namespace BookSalesManageSystem.Pages
             this.InitializeComponent();
         }
 
-        private void SearchId_Click(object sender, RoutedEventArgs e)
+        private async void Sure_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Sure_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (string.IsNullOrEmpty(BookIDBox.Text) || string.IsNullOrEmpty(SaleNumberBox.Text))
+                return;
+            Models.Stock stock = StockUtil.QueryStock(BookIDBox.Text);
+            if (stock != null)
+            {
+                int n = int.Parse(SaleNumberBox.Text);
+                SaleNumberBox.Text = "";
+                if (n < 0)
+                {
+                    await new MessageDialog("怎么还负的数值啊，滚！").ShowAsync();
+                    return;
+                }
+                // 库存记录
+                StockUtil.UpdateStock(stock.Book.BId, n);
+                // 还书记录
+                Models.Return @return = new Models.Return { Book = stock.Book, Number = n, Time = DateTimeOffset.Now, TotalPrice = stock.SalePrice * n };
+                ReturnUtil.AddReturn(@return);
+            }
+            else
+                await new MessageDialog("没有这种书，请重新输入书籍编号！").ShowAsync();
+            BookIDBox.Text = "";
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            BookIDBox.Text = "";
+            SaleNumberBox.Text = "";
+        }
 
+        private void BookIDBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            BookIDLabel.Visibility = string.IsNullOrEmpty(BookIDBox.Text) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void SaleNumberBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SaleNumberLabel.Visibility = string.IsNullOrEmpty(SaleNumberBox.Text) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

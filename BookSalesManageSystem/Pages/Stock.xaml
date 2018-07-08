@@ -12,8 +12,8 @@
         <StackPanel>
             <RelativePanel Margin="20">
                 <TextBlock Text="库存" FontSize="20" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
-                <AutoSuggestBox Name="Search" Width="200" PlaceholderText="搜索库存" RelativePanel.AlignVerticalCenterWithPanel="True" QueryIcon="Find" 
-                            RelativePanel.AlignRightWithPanel="True" TextChanged="Search_TextChanged" QuerySubmitted="Search_QuerySubmitted"/>
+                <AutoSuggestBox Name="Search" Width="200" PlaceholderText="搜索库存" RelativePanel.AlignVerticalCenterWithPanel="True" 
+                                QueryIcon="Find" RelativePanel.AlignRightWithPanel="True" TextChanged="Search_TextChanged"/>
             </RelativePanel>
             <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"/>
             <Grid Margin="20, 10, 20, 10">
@@ -33,7 +33,7 @@
                 <TextBlock Text="卖出价" Grid.Column="5" VerticalAlignment="Center"/>
             </Grid>
             <Line Height="5" Stretch="Fill" Stroke="Black" StrokeThickness="0.3" X1="1"/>
-            <ListView Name="BookList" ItemsSource="{x:Bind stocks}" IsItemClickEnabled="True" ItemClick="BookList_ItemClick">
+            <ListView Name="BookList" ItemsSource="{x:Bind stockView.stocks}" IsItemClickEnabled="False">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

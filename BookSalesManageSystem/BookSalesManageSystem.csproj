@@ -130,6 +130,7 @@
     <Compile Include="Utils\StockUtil.cs" />
     <Compile Include="Utils\SupplierStockUtil.cs" />
     <Compile Include="Utils\SupplierUtil.cs" />
+    <Compile Include="ViewModels\StockViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -186,9 +187,7 @@
       <Version>3.8.7.2</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <SDKReference Include="SQLite.UWP.2015, Version=3.24.0">
       <Name>SQLite for Universal Windows Platform</Name>

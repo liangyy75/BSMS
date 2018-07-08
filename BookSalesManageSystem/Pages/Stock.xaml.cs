@@ -1,7 +1,6 @@
-﻿using BookSalesManageSystem.Models;
+﻿using BookSalesManageSystem.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,30 +23,25 @@ namespace BookSalesManageSystem.Pages
     /// </summary>
     public sealed partial class Stock : Page
     {
-        ObservableCollection<Models.Stock> stocks = new ObservableCollection<Models.Stock>();
+        StockViewModel stockView = StockViewModel.GetInstance();
 
         public Stock()
         {
             this.InitializeComponent();
-            Book book = new Book() { BId = 1, BName="smg", BAuthor="wtf" };
-            Models.Stock stock = new Models.Stock() { Book=book, Number=10, OfferPrice=1.5f, SalePrice=2.0f };
-            stocks.Add(stock);
-            
+            // Book book = new Book() { BId = 1, BName="smg", BAuthor="wtf" };
+            // Models.Stock stock = new Models.Stock() { Book=book, Number=10, OfferPrice=1.5f, SalePrice=2.0f };
+            // stocks.Add(stock);
         }
 
         private void Search_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-
-        }
-
-        private void Search_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
-        {
-
-        }
-
-        private void BookList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
+            if (string.IsNullOrEmpty(sender.Text))
+            {
+                stockView.ReGetAllStocks();
+                return;
+            }
+            stockView.SaveStocks();
+            stockView.QueryStocks(sender.Text);
         }
     }
 }
