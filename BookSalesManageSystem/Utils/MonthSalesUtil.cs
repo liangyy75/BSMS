@@ -20,7 +20,7 @@ namespace BookSalesManageSystem.Utils
         // 得到全部(order by time)
         public static List<MonthSales> GetAllMonthSales()
         {
-            string sql = "select sum(number), sum(total_price), strftime(\"%m\", s_time) as month from sale group by month";
+            string sql = "select sum(number), sum(total_price), strftime(\"%m\", s_time) as month from sale group by month order by month desc";
             var conn = SqlUtil.conn;
             List<MonthSales> monthSaleses = new List<MonthSales>();
             using(var statement = conn.Prepare(sql))
