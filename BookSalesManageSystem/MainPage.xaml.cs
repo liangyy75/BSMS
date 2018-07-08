@@ -1,4 +1,5 @@
 ﻿using BookSalesManageSystem.Pages;
+using BookSalesManageSystem.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,6 +30,7 @@ namespace BookSalesManageSystem
         {
             this.InitializeComponent();
             MyContent.Navigate(typeof(Sales));
+            SqlUtil.LoadDatabase();
         }
 
         private void Navigation_ItemClick(object sender, ItemClickEventArgs e)
