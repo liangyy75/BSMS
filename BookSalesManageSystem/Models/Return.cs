@@ -8,9 +8,9 @@ namespace BookSalesManageSystem.Models
 {
     public class Return
     {
-        public int Rid { get; set; }
         public Book Book { get; set; }
         public int Number { get; set; }
         public DateTimeOffset Time { get; set; }
+        public float TotalPrice { get; set; }
     }
 }

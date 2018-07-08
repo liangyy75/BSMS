@@ -9,7 +9,6 @@ namespace BookSalesManageSystem.Models
     //销售记录
     public class Sale
     {
-        public int SaleId { get; set; }
         public Book Book { get; set; }
         public int Number { set; get; }
         public DateTimeOffset Time { get; set; }
